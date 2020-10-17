@@ -4,7 +4,6 @@ fetch('https://swapi.dev/api/planets/')
 })
 .then(data=>{
     let d = data.results;
-    // console.log(d);
     return d;
 })
 .then(data=>{
@@ -16,32 +15,48 @@ fetch('https://swapi.dev/api/planets/')
         ul.className = 'planet-lists';
        ul.innerHTML = `
             <li>
-                <h3>Name:${p.name}</h3>
+                <h3>${p.name}</h3>
                 <p>Rotation Period:${p.rotation_period}</p>
                     <p>Population: ${p.population}</p>
                     <p>Orbital Period: ${p.orbital_period}</p>
                     <p class="films">Films List</p>
-               
+                    <p class = "resident">Residents</p>
             </li>
        `;
        let film = ul.querySelector('.films');
+       let resident = ul.querySelector('.resident');
        p.films.forEach(f=>{
-           let link = document.createElement('ul');
+           let list = document.createElement('ul');
             if(f){
                 fetch(f)
                 .then(data=>{
                     return data.json();
                 })
                 .then(res=>{
-                    // console.log(res);
-                    link.innerHTML = `<li>${res.title} (<span>Director:${res.director}</span>)</li>`;
+                    list.innerHTML = `<li>${res.title} (<span>Director:${res.director}</span>)</li>`;
                 }).catch(err=>{
-                    link.innerHTML = `No movie foundS`;
+                    list.innerHTML = `No movie foundS`;
                 });
                 
             }
-            film.append(link);
+            film.append(list);
        });
+       p.residents.forEach(person=>{
+        let resList = document.createElement('ul');
+         if(person){
+             fetch(person)
+             .then(data=>{
+                 return data.json();
+             })
+             .then(res=>{
+                 resList.innerHTML = `<li>${res.name} (<span>${res.gender}</span>)</li>`;
+             }).catch(err=>{
+                 resList.innerHTML = `No movie foundS`;
+             });
+             
+         }
+         resident.append(resList);
+    });
         dom.append(ul);
     });
 });
