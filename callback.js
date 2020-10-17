@@ -1,5 +1,3 @@
-
-
 let student = [
     { name: "Micheal", score: 70, school: 'Wast' },
     { name: "samuel", score: 85, school: 'East' },
@@ -10,14 +8,14 @@ let student = [
     { name: "Kidst", score: 80, school: 'Wast' },
     { name: "Antenh", score: 95, school: 'East' },
 ];
-function processStudents(data, callback) {
+const processStudents=(data, callback)=> {
     for (let i = 0; i < data.length; i++) {
         if (data[i].school.toLowerCase() === 'east') {
             callback(data[i]);
         }
     }
 }
-function studentPassed() {
+const studentPassed=()=>{
     let passCount = 0;
     let failCount = 0;
 
@@ -32,7 +30,7 @@ function studentPassed() {
     return passCount;
 }
 
-function checkValidation(){
+const checkValidation = ()=>{
     let passedStudents = [];
     let failedStudents = [];
     processStudents(student, function (obj) {
@@ -48,7 +46,7 @@ function checkValidation(){
     });
     return passedStudents;
 }
-function render(domSelector, element){
+const render=(domSelector, element)=>{
     let studentData = checkValidation();
     let totalPassedStudent = studentPassed();
     if(studentData.length=== totalPassedStudent){
@@ -69,8 +67,8 @@ function render(domSelector, element){
     }
 }
 class App{
-    static init(){
-        render('.student', 'ul');
+    static init(selector, element){
+        render(selector, element);
     }
 }
-App.init();
+App.init('.student', 'ul');
