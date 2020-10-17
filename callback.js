@@ -1,12 +1,12 @@
 let student = [
     { name: "Micheal", score: 70, school: 'Wast' },
-    { name: "samuel", score: 85, school: 'East' },
-    { name: "Lidet", score: 60, school: 'East' },
+    { name: "Kamino", score: 85, school: 'East' },
+    { name: "Alderaan", score: 60, school: 'East' },
     { name: "Tomas", score: 40, school: 'Wast' },
-    { name: "Mihiret", score: 90, school: 'East' },
+    { name: "Dagobah", score: 90, school: 'East' },
     { name: "Adonay", score: 50, school: 'East' },
-    { name: "Kidst", score: 80, school: 'Wast' },
-    { name: "Antenh", score: 95, school: 'East' },
+    { name: "Tatooine", score: 80, school: 'Wast' },
+    { name: "Endor", score: 95, school: 'East' },
 ];
 const processStudents=(data, callback)=> {
     for (let i = 0; i < data.length; i++) {

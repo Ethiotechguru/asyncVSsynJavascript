@@ -11,6 +11,7 @@ fetch('https://swapi.dev/api/planets/')
     let dom = document.querySelector('.planetX');
     
     data.forEach(p=>{
+        console.log(p.name);
         let ul = document.createElement('ul');
        ul.innerHTML = `
             <li>
