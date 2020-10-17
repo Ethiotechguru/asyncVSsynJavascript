@@ -19,8 +19,13 @@ fetch('https://swapi.dev/api/planets/')
                 <p>Rotation Period:${p.rotation_period}</p>
                     <p>Population: ${p.population}</p>
                     <p>Orbital Period: ${p.orbital_period}</p>
-                    <p class="films">Films List</p>
-                    <p class = "resident">Residents</p>
+                    <div class="films">
+                        <h5>Films List<h5>
+                    </div>
+                    <div class = "resident">
+                        <h5 >Residents</h5>
+                    </div>
+                    
             </li>
        `;
        let film = ul.querySelector('.films');
