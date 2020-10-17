@@ -14,7 +14,7 @@ const processStudents=(data, callback)=> {
             callback(data[i]);
         }
     }
-}
+};
 const studentPassed=()=>{
     let passCount = 0;
     let failCount = 0;
@@ -28,7 +28,7 @@ const studentPassed=()=>{
         }
     });
     return passCount;
-}
+};
 
 const checkValidation = ()=>{
     let passedStudents = [];
@@ -45,7 +45,7 @@ const checkValidation = ()=>{
     
     });
     return passedStudents;
-}
+};
 const render=(domSelector, element)=>{
     let studentData = checkValidation();
     let totalPassedStudent = studentPassed();
@@ -65,7 +65,7 @@ const render=(domSelector, element)=>{
         });
       container.append(ul);
     }
-}
+};
 class App{
     static init(selector, element){
         render(selector, element);
