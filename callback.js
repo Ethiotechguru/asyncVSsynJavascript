@@ -1,3 +1,5 @@
+
+
 let student = [
     { name: "Micheal", score: 70, school: 'Wast' },
     { name: "samuel", score: 85, school: 'East' },
@@ -15,29 +17,60 @@ function processStudents(data, callback) {
         }
     }
 }
-processStudents(student, function (obj) {
-    if (obj.score > 60) {
-        console.log(obj.name + " Passed!")
-
-    } else {
-        console.log(obj.name + ' failed!');
-    }
-
-});
 function studentPassed() {
     let passCount = 0;
     let failCount = 0;
 
     processStudents(student, function (obj) {
-        if (obj.score > 60) {
+        if (obj.score >= 60) {
             passCount++;
         }
         else {
             failCount++;
         }
     });
-    console.log(passCount + ' student passed');
-    console.log(failCount + ' student failed');
+    return passCount;
 }
 
-studentPassed();
+function checkValidation(){
+    let passedStudents = [];
+    let failedStudents = [];
+    processStudents(student, function (obj) {
+        if (obj.score >= 60) {
+            passedStudents.push(obj);
+            obj.registrationValid = true;
+    
+        } else {
+            failedStudents.push(obj);
+            obj.registrationValid=false;
+        }
+    
+    });
+    return passedStudents;
+}
+function render(domSelector, element){
+    let studentData = checkValidation();
+    let totalPassedStudent = studentPassed();
+    if(studentData.length=== totalPassedStudent){
+        let container = document.querySelector(domSelector);
+        let ul = document.createElement(element);
+        ul.className = 'student-list';
+        studentData.forEach(student=>{
+            let s = `
+                <li>
+                    <h3>Student Name: ${student.name}</h3>
+                    <p>Score: ${student.score}</p>
+                    <p>School: ${student.school}</p>
+                </li>
+            `;
+            ul.innerHTML += s;
+        });
+      container.append(ul);
+    }
+}
+class App{
+    static init(){
+        render('.student', 'ul');
+    }
+}
+App.init();
